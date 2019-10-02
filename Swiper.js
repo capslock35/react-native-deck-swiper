@@ -922,7 +922,7 @@ Swiper.propTypes = {
 Swiper.defaultProps = {
   animateCardOpacity: false,
   animateOverlayLabelsOpacity: false,
-  backgroundColor: '#4FD0E9',
+  backgroundColor: 'white',
   cardHorizontalMargin: 20,
   cardIndex: 0,
   cardStyle: {},
