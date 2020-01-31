@@ -116,13 +116,15 @@ class Swiper extends Component {
 
   initializePanResponder = () => {
     this._panResponder = PanResponder.create({
-      onStartShouldSetPanResponder: (event, gestureState) => true,
+      onStartShouldSetPanResponder: (event, gestureState) => false,
       onMoveShouldSetPanResponder: (event, gestureState) => false,
 
       onMoveShouldSetPanResponderCapture: (evt, gestureState) => {
+        
         const isVerticalSwipe = Math.sqrt(
           Math.pow(gestureState.dx, 2) < Math.pow(gestureState.dy, 2)
         )
+
         if (!this.props.verticalSwipe && isVerticalSwipe) {
           return false
         }
@@ -752,6 +754,7 @@ class Swiper extends Component {
       <Animated.View
         key={key}
         style={firstCard ? swipableCardStyle : stackCardZoomStyle}
+        {...this._panResponder.panHandlers}
       >
         {firstCard ? renderOverlayLabel : null}
         {stackCard}
@@ -921,7 +924,7 @@ Swiper.propTypes = {
 Swiper.defaultProps = {
   animateCardOpacity: false,
   animateOverlayLabelsOpacity: false,
-  backgroundColor: 'white',
+  backgroundColor: '#4FD0E9',
   cardHorizontalMargin: 20,
   cardIndex: 0,
   cardStyle: {},
